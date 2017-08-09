@@ -123,3 +123,31 @@ sudo tar -xvpzf backup.tar.gz -C /folderDestination
 
 - Similar to the creation command, this allows you to unpack the contents of the file into the folder of your choice.
 - NOTE x = extract, "z" is only used if the file you are unpacking is a .gz file. 
+
+### Users, Groups, Permissions
+
+
+#### Setting Permissions
+- By files/folders you will see generally three numbers (i.e. 777).
+```
+sudo chmod 777 filenameOrFolder -r
+```
+- "-r" allows for the permission choice to be applied to all files and folders below.
+- First number indicates the creators permission, Second number is for the groups permissions, and the Third number is for others.
+
+##### Numbers List
+- 1 is for execute permissions (imagine executing a script)
+- 2 is for Write access, meaning the user/users can alter/edit the file.
+- 4 is for read access, meaning the user/users can see the contents of the file but not change it.
+- NOTE: any user/users/group can have a combination. For example, 5 would be execute and read permission, NOT write.
+
+#### Changing Owner
+
+- For changing ownership of file or folder. NOTE -r is for recursive in case of folder
+```
+sudo chown -R nameOfUser fileOrFolder
+```
+- For changing ownership of group.
+```
+sudo chgrp -R groupName fileOrFolder
+```
