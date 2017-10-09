@@ -1,0 +1,96 @@
+# Scripting Notes
+
+### Additional Facts
+- NOTE All code written below has an INTENTIONAL number of spaces and structure. 
+
+### Basic Math Operations
+```
+read -p "What is your first number?" x
+read -p "What is your second number?" y
+
+echo $((x+y))
+echo $((x-y))
+echo $((x*y))
+echo $((x/y))
+
+```
+- When we use the echo command, we need to ensure that the operation we want to complete is surrounded by "$((mathematicalOperation))"
+- NOTE We are reading from the terminal to get the users input but the logic remains the same.
+
+### Comparison Operators
+- Link: http://www.pyeung.com/pages/unix/linux/bashcomparisonoperators.html
+```
+read -p "Number 1:" x
+read -p "Number 2:" y
+if (( $x == $y )); then
+echo "X is equal to Y"
+elif (( $x > $y )); then
+echo "X is greater than Y"
+elif (( $x < $y )); then
+echo "X is less than Y"
+else
+echo "Error"
+fi
+```
+- NOTE For each condition specified above in the "if" statements all contain a double parentheses in order to allow for operators like ">" or "==" to work
+as we are used to.
+- Another way to do the following would be:
+```
+read -p "Number 1:" x
+read -p "Number 2:" y
+if [ $x -eq $y ]; then
+echo "X is equal to Y"
+elif [ $x -gt $y ]; then
+echo "X is greater than Y"
+elif [ $x -lt $y ]; then
+echo "X is less than Y"
+else
+echo "Error"
+fi
+```
+
+### Comparing Strings
+```
+read -p "Yes or No" answer
+
+if [ $answer = "Y" ] || [ $answer = "y" ]; then
+echo "YES"
+elif [ $answer = "N" ] || [ $answer = "n" ]; then
+echo "NO"
+fi
+```
+- NOTE When comparing strings, the "-eq" keyword does not work being it is expecting to compare two integers.
+- In addition, "or" is written with two pipes or "||".
+
+### For Loops
+- Below is a for loop that applies a range functionality. In this case, the range is from 1 to 50.
+```
+for i in {1..50}
+do
+    echo $i
+done
+```
+- The above code displays in the terminal every number from 1 to 50, one by one.
+
+### While Loops
+
+- The below snippet allows you to print into the terminal all odd numbers from 1 to 100.
+```
+i=1
+
+while [ $i -le 99 ]
+do
+    echo "$i"
+    i=$((i+2))
+done
+
+```
+
+### Grabbing User Input
+```
+read -p "What is your name?" name
+echo "Welcome $name"
+```
+- The "read -p" section is the command that reads the users input from the command line. 
+- After the command, the string is the prompt displayed to the user. 
+- Finally the last word is the name of the variable the user's input will be stored in.
